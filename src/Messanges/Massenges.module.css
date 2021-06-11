@@ -1,0 +1,21 @@
+.Massenges {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding: 10px;
+}
+
+/*.Users {*/
+/*    color: #002aff;*/
+/*}*/
+
+.User.active {
+color: #ec0f89;
+}
+
+.Smses {
+
+}
+
+.Sms {
+    color: darkmagenta;
+}

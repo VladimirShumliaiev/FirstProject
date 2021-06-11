@@ -1,0 +1,21 @@
+
+.nav {
+    grid-area: N;
+    background-color: #002aff;
+    color: yellow;
+    padding: 20px;
+
+}
+
+/*.color {*/
+/*    color: coral;*/
+/*}*/
+
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+.item .activeNav {
+    color: red;
+}

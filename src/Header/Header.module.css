@@ -1,0 +1,9 @@
+.item {
+    grid-area: H;
+    background-color: coral;
+}
+
+.item img {
+    width: 30px;
+}
+

@@ -1,0 +1,11 @@
+
+
+.item {
+    grid-area: C;
+    background-color: yellow;
+}
+
+.item img {
+    width: 1200px;
+    height: 500px;
+}
