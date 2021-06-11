@@ -1,0 +1,23 @@
+.App {
+    display: grid;
+
+    grid-template-areas:
+      "H H "
+      "N C ";
+    grid-temlate-rows: 60px 1fr;
+    grid-template-columns: 2fr 12fr;
+    grid-gap: 2px;
+    margin: 0 auto;
+    width: 1600px;
+
+}
+
+.Countent {
+    grid-area: C;
+    background-color: yellow;
+}
+
+
+
+
+
