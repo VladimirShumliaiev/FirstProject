@@ -9,7 +9,7 @@ const Massenges = () => {
                     Vladimir
                 </div>
                 <div className={Style.User}>
-                    Alex
+                    Alexx
                 </div>
                 <div className={Style.User}>
                     Irina
