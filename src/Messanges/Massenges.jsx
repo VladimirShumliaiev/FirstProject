@@ -12,7 +12,7 @@ const Massenges = () => {
                     Alexxx
                 </div>
                 <div className={Style.User}>
-                    Irina
+                    Irinaa
                 </div>
                 <div className={Style.User}>
                     Oleg
