@@ -6,6 +6,7 @@ import ProfileAva from "./Profile Ava/Profile Ava";
 import MyPost from "./Posts/MyPost/MyPost";
 
 
+
 const Profile = (props) => {
     let newPost = props.state.map((el) => {
         return (
@@ -15,10 +16,8 @@ const Profile = (props) => {
     return (
         <div className={Style.item}>
             <ProfileAva/>
-            <MyPost name={'My Post'}/>
-            <div>
-            </div>
-            <ButtonTexterea/>
+            <MyPost/>
+            <ButtonTexterea profileFunction={props.profileFunction} />
             {newPost}
         </div>
     )

@@ -3,13 +3,14 @@ import style from './ButtonTexterea.module.css'
 
 
 
-const ButtonTexterea = () => {
+const ButtonTexterea = (props) => {
 
     let newAddPost = React.createRef();
 
     let addPost = () => {
         let text = newAddPost.current.value;
-        alert(text);
+        props.profileFunction(text);
+        newAddPost.current.value='';
     }
     return (
         <div>
