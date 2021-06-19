@@ -14,7 +14,7 @@ const ButtonTexterea = (props) => {
     }
     return (
         <div>
-        <textarea ref={ newAddPost }></textarea>
+        <textarea ref={ newAddPost }/>
       <button onClick={ addPost } className={style.item}><b>add Post</b></button>
         </div>
     )

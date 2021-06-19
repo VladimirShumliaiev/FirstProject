@@ -32,7 +32,9 @@ let state = {
         ],
         sms: [
             {sms: 'Sms:'}
-        ]
+        ],
+        postMessagesSms: 'hello my friends',
+
     },
     navName: [
 
@@ -66,11 +68,16 @@ export const profileFunction = (sms) => {
     state.profilePosts.push(profilePost);
     rerenderIndex(state)
 }
-export const messagesFunction = (sms) => {
+export const messagesFunction = () => {
     let addSms = {
-        sms: sms,
+        sms: state.messages.postMessagesSms,
     }
     state.messages.sms.push(addSms);
+    rerenderIndex(state)
+}
+
+export const changeMessage = (newSmsText) => {
+    state.messages.postMessagesSms = newSmsText;
     rerenderIndex(state)
 }
 export const functionSettings = (sms) => {

@@ -1,5 +1,4 @@
 import React from "react";
-import style from './Profile Ava.module.css';
 
 const ProfileAva = () => {
     return (

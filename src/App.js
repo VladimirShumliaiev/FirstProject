@@ -15,9 +15,9 @@ const App = (props) => {
                 <Header/>
                 <NavBar state={props.state.navName}/>
                 <div className={'Countent'}>
-                    {/*<Profile state={props.state.posts}/>*/}
                     <Route path={'/profile'} render={ () => <Profile state={props.state.profilePosts} profileFunction={props.profileFunction} />}/>
-                    <Route path={'/messages'} render={ () => <Massenges state={props.state.messages} messagesFunction={props.messagesFunction} />}/>
+                    <Route path={'/messages'} render={ () => <Massenges state={props.state.messages} messagesFunction={props.messagesFunction}
+                                                                        changeMessage={props.changeMessage} />}/>
                     <Route path={'/settings'} render={ () => <Settings state={props.state.settings} functionSettings={props.functionSettings} />}/>
                 </div>
             </div>
