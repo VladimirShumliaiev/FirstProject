@@ -1,4 +1,4 @@
-import React from "react";
+
 import {rerenderIndex} from "../index";
 
 let state = {
@@ -39,7 +39,7 @@ let state = {
     navName: [
 
         {id: '/profile', name: 'Profile'},
-        {id: '/messages', name: 'Mesages'},
+        {id: '/messages', name: 'Messages'},
         {id: '/music', name: 'Music'},
         {id: '/news', name: 'News'},
         {id: '/settings', name: 'Settings'},
