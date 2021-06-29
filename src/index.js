@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import state from "./Redux/state";
+import state, {onChangeProfile, subscribe} from "./Redux/state";
 import {functionSettings,profileFunction,messagesFunction,changeMessage} from "./Redux/state";
 
 
@@ -11,6 +11,7 @@ export let rerenderIndex = () => {
         <App state={state}
              functionSettings={functionSettings}
              profileFunction={profileFunction}
+             onChangeProfile={onChangeProfile}
              changeMessage={changeMessage}
              messagesFunction={messagesFunction}/>,
         document.getElementById('root')
@@ -18,4 +19,4 @@ export let rerenderIndex = () => {
 }
 
 rerenderIndex(state);
-
+subscribe(rerenderIndex)

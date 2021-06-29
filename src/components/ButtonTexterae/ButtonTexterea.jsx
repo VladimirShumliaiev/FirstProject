@@ -3,18 +3,22 @@ import style from './ButtonTexterea.module.css'
 
 
 
+
 const ButtonTexterea = (props) => {
 
-    let newAddPost = React.createRef();
+    let newAddPost = props.state.addPostSms;
 
     let addPost = () => {
-        let text = newAddPost.current.value;
-        props.profileFunction(text);
-        newAddPost.current.value='';
+        props.profileFunction();
+    }
+
+    let onChangeMessage = (e) => {
+        let sms = e.target.value;
+        props.onChangeProfile(sms)
     }
     return (
         <div>
-        <textarea ref={ newAddPost }/>
+        <textarea onChange={onChangeMessage} value={newAddPost} placeholder={'add sms...'}/>
       <button onClick={ addPost } className={style.item}><b>add Post</b></button>
         </div>
     )

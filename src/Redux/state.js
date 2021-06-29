@@ -1,27 +1,28 @@
-
-import {rerenderIndex} from "../index";
-
+let callSubscribers = () => {}
 let state = {
-    profilePosts: [
-        {
-            foto: 'https://i.ytimg.com/vi/3zcOWKTaw3Q/maxresdefault.jpg',
-            sms: 'Hello',
-            like: 43
-        },
+    profilePosts: {
+        profileList: [
+            {
+                foto: 'https://i.ytimg.com/vi/3zcOWKTaw3Q/maxresdefault.jpg',
+                sms: 'Hello',
+                like: 43
+            },
 
-        {
-            foto: 'https://im.kommersant.ru/Issues.photo/DAILY/2013/085/KMO_085521_10165_1_t218.jpg',
-            sms: 'Hello Hello',
-            like: 67
-        },
+            {
+                foto: 'https://im.kommersant.ru/Issues.photo/DAILY/2013/085/KMO_085521_10165_1_t218.jpg',
+                sms: 'Hello Hello',
+                like: 67
+            },
 
-        {
-            foto: 'https://www.sovsport.ru/data/sovsport/upload/2000-01/16/images-6041-1538129659.jpg',
-            sms: 'Hi',
-            like: 954
-        },
+            {
+                foto: 'https://www.sovsport.ru/data/sovsport/upload/2000-01/16/images-6041-1538129659.jpg',
+                sms: 'Hi',
+                like: 954
+            },
 
-    ],
+        ],
+        addPostSms: ''
+    },
     messages: {
         useres: [
             {id: 1,name: 'Oleg'},
@@ -59,33 +60,48 @@ let state = {
     }
 }
 
-export const profileFunction = (sms) => {
-    let profilePost = {
+
+
+
+export const profileFunction = () => {
+    let addProfilePost = {
         foto: 'https://www.sovsport.ru/data/sovsport/upload/2000-01/16/images-6041-1538129659.jpg',
-        sms: sms,
+        sms: state.profilePosts.addPostSms,
         like: 561,
     }
-    state.profilePosts.push(profilePost);
-    rerenderIndex(state)
+    state.profilePosts.profileList.push(addProfilePost);
+    state.profilePosts.addPostSms = '';
+    callSubscribers(state)
 }
+export const onChangeProfile = (sms) => {
+    state.profilePosts.addPostSms = sms;
+    callSubscribers(state);
+}
+
+
 export const messagesFunction = () => {
     let addSms = {
         sms: state.messages.postMessagesSms,
     }
     state.messages.sms.push(addSms);
-    rerenderIndex(state)
+    state.messages.postMessagesSms = '';
+    callSubscribers(state)
 }
-
 export const changeMessage = (newSmsText) => {
     state.messages.postMessagesSms = newSmsText;
-    rerenderIndex(state)
+    callSubscribers(state)
 }
+
 export const functionSettings = (sms) => {
     let settings = {
         sms: sms,
     }
     state.settings.sms.push(settings);
-    rerenderIndex(state);
+    callSubscribers(state);
+}
+
+export const subscribe = (observer) => {
+    callSubscribers = observer;
 }
 
 

@@ -8,6 +8,7 @@ import Massenges from "./Messanges/Massenges";
 import Settings from "./Settings/Settings";
 
 
+
 const App = (props) => {
     return (
         <BrowserRouter>
@@ -15,7 +16,7 @@ const App = (props) => {
                 <Header/>
                 <NavBar state={props.state.navName}/>
                 <div className={'Countent'}>
-                    <Route path={'/profile'} render={ () => <Profile state={props.state.profilePosts} profileFunction={props.profileFunction} />}/>
+                    <Route path={'/profile'} render={ () => <Profile state={props.state.profilePosts} profileFunction={props.profileFunction} onChangeProfile={props.onChangeProfile} />}/>
                     <Route path={'/messages'} render={ () => <Massenges state={props.state.messages} messagesFunction={props.messagesFunction}
                                                                         changeMessage={props.changeMessage} />}/>
                     <Route path={'/settings'} render={ () => <Settings state={props.state.settings} functionSettings={props.functionSettings} />}/>

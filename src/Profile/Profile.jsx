@@ -7,17 +7,19 @@ import MyPost from "./Posts/MyPost/MyPost";
 
 
 
+
 const Profile = (props) => {
-    let newPost = props.state.map((el) => {
+    let newPost = props.state.profileList.map((el) => {
         return (
             <Post foto={el.foto} sms={el.sms} like={el.like} />
         )
     })
+    debugger;
     return (
         <div className={Style.item}>
             <ProfileAva/>
             <MyPost/>
-            <ButtonTexterea profileFunction={props.profileFunction} />
+            <ButtonTexterea state={props.state} profileFunction={props.profileFunction} onChangeProfile={props.onChangeProfile}/>
             {newPost}
         </div>
     )
