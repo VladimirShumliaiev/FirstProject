@@ -1,12 +1,13 @@
 import React from "react";
 import Style from './NavBar.module.css'
-import NavBarShablon from "../components/NavBarShablon";
+import NavBarShablon from "../NavBarShablon";
 import {NavLink} from "react-router-dom";
+import navBarNameList from "../../Redux/reducers/navBarReducer";
 
 
 
-const NavBar = (props) => {
-    let newNavBar = props.state.map((el) => {
+const NavBar = () => {
+    let newNavBar = navBarNameList.map((el) => {
         return (
            <NavBarShablon name={<NavLink to={el.id}>{el.name}</NavLink>}/>
         )

@@ -1,25 +1,24 @@
 import React from "react";
 import './App.css';
-import Header from "./Header/Header";
-import NavBar from "./NavBar/NavBar";
-import Profile from "./Profile/Profile";
+import Header from "./components/Header/Header";
+import NavBar from "./components/NavBar/NavBar";
+import Profile from "./components/Profile/Profile";
 import {BrowserRouter, Route} from "react-router-dom";
-import Massenges from "./Messanges/Massenges";
-import Settings from "./Settings/Settings";
+import Settings from "./components/Settings/Settings";
+import MessangesContainer from "./components/Messanges/MessangesContainer";
 
 
 
-const App = (props) => {
+const App = () => {
     return (
         <BrowserRouter>
             <div className={'App'}>
                 <Header/>
-                <NavBar state={props.state.navName}/>
+                <NavBar/>
                 <div className={'Countent'}>
-                    <Route path={'/profile'} render={ () => <Profile state={props.state.profilePosts} profileFunction={props.profileFunction} onChangeProfile={props.onChangeProfile} />}/>
-                    <Route path={'/messages'} render={ () => <Massenges state={props.state.messages} messagesFunction={props.messagesFunction}
-                                                                        changeMessage={props.changeMessage} />}/>
-                    <Route path={'/settings'} render={ () => <Settings state={props.state.settings} functionSettings={props.functionSettings} />}/>
+                    <Route path={'/profile'} render={ () => <Profile />}/>
+                    <Route path={'/messages'} render={ () => <MessangesContainer/>}/>
+                    {/*<Route path={'/settings'} render={ () => <Settings/>}/>*/}
                 </div>
             </div>
         </BrowserRouter>

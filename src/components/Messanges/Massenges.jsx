@@ -6,9 +6,9 @@ import Style from './Massenges.module.css'
 
 const Massenges = (props) => {
 
-    let pushButton = React.createRef();
+    let pushButton = props.messagesPage.postMessagesSms;
 
-    let newUsers = props.state.useres.map((el) => {
+    let newUsers = props.messagesPage.useres.map((el) => {
         return(
         <div key={el.id}>
             {el.name}
@@ -16,7 +16,7 @@ const Massenges = (props) => {
         )
     })
 
-    let newSms = props.state.sms.map((el) => {
+    let newSms = props.messagesPage.sms.map((el) => {
         return(
         <div>
             {el.sms}
@@ -25,14 +25,12 @@ const Massenges = (props) => {
     })
 
     let buttonOnClick = () => {
-        let text = pushButton.current.value;
-        props.messagesFunction(text);
-        props.changeMessage('');
+        props.addPost();
     }
 
-let newChangeMessage = () => {
-    let text = pushButton.current.value;
-    props.changeMessage(text);
+let newChangeMessage = (e) => {
+    let text = e.target.value;
+    props.oneChangeMessage(text);
 }
     return (
         <div className={Style.Massenges}>
@@ -42,7 +40,7 @@ let newChangeMessage = () => {
 
             <div className={Style.Smses}>
                 {newSms}
-                <textarea onChange={newChangeMessage} ref={pushButton} value={props.state.postMessagesSms}/>
+                <textarea onChange={newChangeMessage} placeholder={'add sms plz...'}  value={pushButton}/>
                 <button onClick={buttonOnClick}>add sms plz</button>
             </div>
         </div>

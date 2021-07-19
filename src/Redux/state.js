@@ -1,6 +1,6 @@
 let callSubscribers = () => {}
 let state = {
-    profilePosts: {
+    profilePage: {
         profileList: [
             {
                 foto: 'https://i.ytimg.com/vi/3zcOWKTaw3Q/maxresdefault.jpg',
@@ -23,7 +23,7 @@ let state = {
         ],
         addPostSms: ''
     },
-    messages: {
+    messagesPage: {
         useres: [
             {id: 1,name: 'Oleg'},
             {id: 1,name: 'Vasya'},
@@ -37,7 +37,7 @@ let state = {
         postMessagesSms: 'hello my friends',
 
     },
-    navName: [
+    navBarNameList: [
 
         {id: '/profile', name: 'Profile'},
         {id: '/messages', name: 'Messages'},
@@ -45,7 +45,7 @@ let state = {
         {id: '/news', name: 'News'},
         {id: '/settings', name: 'Settings'},
     ],
-    settings: {
+    settingsPage: {
         user: [
             {id: 1, user: 'Boris'},
             {id: 2, user: 'Ivan'},
@@ -63,7 +63,7 @@ let state = {
 
 
 
-export const profileFunction = () => {
+export const addPostProfile = () => {
     let addProfilePost = {
         foto: 'https://www.sovsport.ru/data/sovsport/upload/2000-01/16/images-6041-1538129659.jpg',
         sms: state.profilePosts.addPostSms,
@@ -74,21 +74,21 @@ export const profileFunction = () => {
     callSubscribers(state)
 }
 export const onChangeProfile = (sms) => {
-    state.profilePosts.addPostSms = sms;
+    state.profilePage.addPostSms = sms;
     callSubscribers(state);
 }
 
 
-export const messagesFunction = () => {
+export const addPostMessage = () => {
     let addSms = {
-        sms: state.messages.postMessagesSms,
+        sms: state.messagesPage.postMessagesSms,
     }
-    state.messages.sms.push(addSms);
-    state.messages.postMessagesSms = '';
+    state.messagesPage.sms.push(addSms);
+    state.messagesPage.postMessagesSms = '';
     callSubscribers(state)
 }
-export const changeMessage = (newSmsText) => {
-    state.messages.postMessagesSms = newSmsText;
+export const onChangeMessage = (newSmsText) => {
+    state.messagesPage.postMessagesSms = newSmsText;
     callSubscribers(state)
 }
 
@@ -96,7 +96,7 @@ export const functionSettings = (sms) => {
     let settings = {
         sms: sms,
     }
-    state.settings.sms.push(settings);
+    state.settingsPage.sms.push(settings);
     callSubscribers(state);
 }
 
