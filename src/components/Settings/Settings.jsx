@@ -3,7 +3,9 @@ import Style from './Settings.module.css'
 
 const Settings = (props) => {
 
-    let nameList = props.state.user.map((el) => {
+    let settingsValue = props.settingsPage.settingsPost;
+
+    let nameList = props.settingsPage.user.map((el) => {
         return (
            <div>
                {el.user}
@@ -11,7 +13,7 @@ const Settings = (props) => {
         )
     })
 
-    let smsList = props.state.sms.map((el) => {
+    let smsList = props.settingsPage.smsSettings.map((el) => {
         return (
             <div>
                 {el.sms}
@@ -19,12 +21,14 @@ const Settings = (props) => {
         )
     })
 
-    let onClickTexterea = React.createRef();
 
     let addSms = () => {
-        let newAddSms = onClickTexterea.current.value;
-        props.functionSettings(newAddSms);
-        onClickTexterea.current.value='';
+        props.addPostSettings();
+    }
+
+    let onChangeSettings = (e) => {
+        let text = e.target.value;
+        props.oneChangeSettings(text);
     }
 
 
@@ -33,7 +37,7 @@ const Settings = (props) => {
             <div>
                 {nameList}
                 <div>
-                    <textarea ref={onClickTexterea}/>
+                    <textarea onChange={onChangeSettings} placeholder={'Hi'} value={settingsValue}/>
                     <button onClick={addSms}>add sms</button>
                 </div>
             </div>

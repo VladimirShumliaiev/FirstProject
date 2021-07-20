@@ -1,6 +1,5 @@
-
-const addSettingsAT = 'ADD-MESSAGE-POST';
-const onChangeAT = 'ON-CHANGE-MMESSAGE';
+const addSettingsAT = 'ADD-MESSAGE-POST-SETINGS';
+const onChangeAT = 'ON-CHANGE-SETINGS';
 
 
 let initialState = {
@@ -11,34 +10,52 @@ let initialState = {
         {id: 4, user: 'Maxim'},
         {id: 5, user: 'Petr'},
     ],
-    sms: [
+    smsSettings: [
         {sms: 'sms:'}
-    ]
+    ],
+
+    settingsPost: '',
 
 }
 
 let settingsReducer = (state = initialState, action) => {
-    switch (action.type){
-        case addSettingsAT:{
+    let stateCopy;
+    switch (action.type) {
+        case addSettingsAT: {
             let settings = {
-                sms: state.settingsPage.sms
+                sms: state.settingsPost
             }
-            let stateCopy = {...state};
-            stateCopy.settingsPage = {...state.settingsPage}
-            stateCopy.settingsPage.sms.push(settings);
-            return stateCopy;
-        } case onChangeAT: {
-            let stateCopy = {...state};
-            stateCopy.settingsPage.sms = action.sms;
+            stateCopy = {
+                ...state,
+                smsSettings: [...state.smsSettings, settings],
+                settingsPost: '',
+            }
             return stateCopy;
         }
+        case onChangeAT:
+            stateCopy = {
+                ...state,
+                settingsPost: action.sms,
+            }
+            return stateCopy;
 
-        default: {
+
+        default:
             return state;
-        }
     }
 }
 
+export const addPostSettingsAC = () => {
+    return (
+        {type: addSettingsAT}
+    )
+}
+
+export const onChangeSettingsAC = (sms) => {
+    return (
+        {type: onChangeAT, sms: sms}
+    )
+}
 
 
 export default settingsReducer;

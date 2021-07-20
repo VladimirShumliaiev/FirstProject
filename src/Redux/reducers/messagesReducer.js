@@ -4,34 +4,38 @@ const onChangeAT = 'ON-CHANGE-MMESSAGE';
 
 let initialState = {
     useres: [
-        {id: 1,name: 'Oleg'},
-        {id: 1,name: 'Vasya'},
-        {id: 1,name: 'Pasha'},
-        {id: 1,name: 'Kolya'},
-        {id: 1,name: 'Kostya'},
+        {id: 1, name: 'Oleg'},
+        {id: 1, name: 'Vasya'},
+        {id: 1, name: 'Pasha'},
+        {id: 1, name: 'Kolya'},
+        {id: 1, name: 'Kostya'},
     ],
-        sms: [
-    {sms: 'Sms:'}
-],
+    smsMessage: [
+        {sms: 'Sms:'}
+    ],
     postMessagesSms: '',
 
 }
 
 let messagesReducer = (state = initialState, action) => {
-    switch (action.type){
-        case addMessageAT:{
+    let stateCopy;
+    switch (action.type) {
+        case addMessageAT: {
             let addSms = {
                 sms: state.postMessagesSms,
             }
-            let stateCopy = {...state};
-            stateCopy.sms = [...state.sms]
-            stateCopy.sms.push(addSms);
-            stateCopy.postMessagesSms = '';
+            stateCopy = {
+                ...state,
+                smsMessage: [...state.smsMessage, addSms],
+                postMessagesSms: '',
+            }
             return stateCopy;
         }
-        case onChangeAT:{
-            let stateCopy = {...state};
-            stateCopy.postMessagesSms = action.sms;
+        case onChangeAT: {
+            stateCopy = {
+                ...state,
+                postMessagesSms: action.sms,
+            }
             return stateCopy;
         }
         default: {
@@ -42,7 +46,7 @@ let messagesReducer = (state = initialState, action) => {
 
 export const messagesAC = () => {
     return (
-        {type: addMessageAT }
+        {type: addMessageAT}
     )
 
 }
