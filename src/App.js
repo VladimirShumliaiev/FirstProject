@@ -6,6 +6,8 @@ import Profile from "./components/Profile/Profile";
 import {BrowserRouter, Route} from "react-router-dom";
 import MessangesContainer from "./components/Messanges/MessangesContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
+import MusicContainer from "./components/Music/MusicContainer";
+
 
 
 
@@ -18,6 +20,7 @@ const App = () => {
                 <div className={'Countent'}>
                     <Route path={'/profile'} render={ () => <Profile />}/>
                     <Route path={'/messages'} render={ () => <MessangesContainer/>}/>
+                    <Route path={'/music'} render={() => <MusicContainer/>}/>
                     <Route path={'/settings'} render={ () => <SettingsContainer/>}/>
                 </div>
             </div>

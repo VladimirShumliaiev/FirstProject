@@ -27,7 +27,6 @@ let initialState = {
 };
 
 let profileReducer = (state = initialState,action) => {
-    let stateCopy;
     switch (action.type) {
         case addPostAT: {
             let addProfilePost = {
@@ -35,20 +34,17 @@ let profileReducer = (state = initialState,action) => {
                 sms: state.addPostSms,
                 like: 561,
             }
-            stateCopy = {
+           return {
                 ...state,
                 profileList: [...state.profileList, addProfilePost],
                 addPostSms: ''
             }
-            return stateCopy;
         }
         case onChangeAT:
-            stateCopy = {
+            return {
                 ...state,
                 addPostSms: action.sms,
             }
-            return stateCopy;
-
         default:
             return state;
     }
